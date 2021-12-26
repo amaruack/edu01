@@ -1,4 +1,4 @@
-package com.example.test.callable;
+package com.example.test.future;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ThreadPoolTest {
         );
 
         for (int i = 0; i < 100; i++) {
-            CallerThread th = new CallerThread();
+            CallableThread th = new CallableThread();
             Future future = executor.submit(th);
             list.add(future);
         }

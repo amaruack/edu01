@@ -1,6 +1,7 @@
 package com.example.test.threadpool;
 
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,18 +16,34 @@ public class ThreadPoolTest {
         int maximumPoolSize = 20;
         int keepAliveTime = 600;
 
-        int queueSize = 2;
+        int queueSize = 100;
 
+        // 기본 abort
         ThreadPoolExecutor executor  = new ThreadPoolExecutor(
             corePoolSize,
             maximumPoolSize,
             keepAliveTime, TimeUnit.SECONDS,
-//            new LinkedBlockingQueue(queueSize),
-            new LinkedBlockingQueue(queueSize),
-//            new LinkedBlockingQueue(),
-            new ThreadPoolExecutor.CallerRunsPolicy()
-//            new ThreadPoolExecutor.AbortPolicy()
+            new SynchronousQueue<>()
         );
+
+        // queue size 지정
+//        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
+//            corePoolSize,
+//            maximumPoolSize,
+//            keepAliveTime, TimeUnit.SECONDS,
+//            new LinkedBlockingQueue(queueSize),
+//            new ThreadPoolExecutor.CallerRunsPolicy()
+//        );
+
+        // queue size 지정 안함
+//        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
+//            corePoolSize,
+//            maximumPoolSize,
+//            keepAliveTime, TimeUnit.SECONDS,
+//            new LinkedBlockingQueue(),
+//            new ThreadPoolExecutor.CallerRunsPolicy()
+//        );
+
 
         for (int i = 0; i < 100 ; i++) {
             SampleThread th = new SampleThread(i);

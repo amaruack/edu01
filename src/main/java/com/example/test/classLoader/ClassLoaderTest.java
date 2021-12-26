@@ -42,6 +42,12 @@ public class ClassLoaderTest {
 
     public static void main(String[] args) {
 
+        String param = null;
+        String STATIC = "TEST";
+
+        System.out.println(STATIC.equals(param));
+        System.out.println(param.equals(STATIC));
+
 
     }
 
