@@ -16,15 +16,15 @@ public class ThreadPoolTest {
         int maximumPoolSize = 20;
         int keepAliveTime = 600;
 
-        int queueSize = 100;
+        int queueSize = 60;
 
         // 기본 abort
-        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
-            corePoolSize,
-            maximumPoolSize,
-            keepAliveTime, TimeUnit.SECONDS,
-            new SynchronousQueue<>()
-        );
+//        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
+//            corePoolSize,
+//            maximumPoolSize,
+//            keepAliveTime, TimeUnit.SECONDS,
+//            new SynchronousQueue<>()
+//        );
 
         // queue size 지정
 //        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
@@ -36,13 +36,13 @@ public class ThreadPoolTest {
 //        );
 
         // queue size 지정 안함
-//        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
-//            corePoolSize,
-//            maximumPoolSize,
-//            keepAliveTime, TimeUnit.SECONDS,
-//            new LinkedBlockingQueue(),
-//            new ThreadPoolExecutor.CallerRunsPolicy()
-//        );
+        ThreadPoolExecutor executor  = new ThreadPoolExecutor(
+            corePoolSize,
+            maximumPoolSize,
+            keepAliveTime, TimeUnit.SECONDS,
+            new LinkedBlockingQueue(),
+            new ThreadPoolExecutor.CallerRunsPolicy()
+        );
 
 
         for (int i = 0; i < 100 ; i++) {

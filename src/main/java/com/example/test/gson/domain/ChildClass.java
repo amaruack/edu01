@@ -1,7 +1,10 @@
 package com.example.test.gson.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ChildClass {
 
+    @SerializedName(value = "name", alternate = {"NAME", "name", "dfsdf"})
     private String name;
     private String testKey;
     private ParentClass parent;

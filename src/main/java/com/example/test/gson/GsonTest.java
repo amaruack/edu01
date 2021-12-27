@@ -25,9 +25,11 @@ public class GsonTest {
             new FieldExclusionStrategy().appendExclude(ChildClass.class, new String[]{
                 "parent"
             }))
+        .setPrettyPrinting()
         .create();
 
     private static Gson gson = new GsonBuilder()
+        .setPrettyPrinting()
         .create();
 
     public static void main(String[] args) {
